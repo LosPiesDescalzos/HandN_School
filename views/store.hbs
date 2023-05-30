@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  {{>head}}
+<!--  <script src="/socket.io/socket.io.js"></script>-->
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<!--  <script src="../public/js/socketHandler.js"></script>-->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/store.css" type="text/css"/>
+</head>
+<body>
+
+{{>header}}
+
+<main>
+  <h1 id="wait">Скоро тут появится магазин с нашим мерчем!</h1>
+</main>
+<script>
+  const socket = io('http://localhost:8080/store');
+
+  const createToaster = (answer) => {
+    toastr.options.closeButton = true;
+    toastr.options.positionClass = 'toast-absolute toast-top-left';
+    toastr['info'](
+      `Product ${answer.id} was added just now`,
+      'New Product',
+    );
+  };
+
+  socket.on('newProduct', (answer) => {
+    createToaster(answer);
+  });
+</script>
+
+{{>footer}}
+
+{{>copy_right}}
+
+</body>
+</html>

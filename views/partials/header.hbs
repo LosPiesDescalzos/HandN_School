@@ -1,0 +1,39 @@
+<header>
+  <nav class="top-menu">
+    <ul class="menu-main">
+      <li><a class="block" href="/" data-link="index">О нас</a></li>
+      <li><a class="block" href="courses" data-link="courses">Курсы</a></li>
+      <li><a class="block" href="parents" data-link="parents">Родителям</a></li>
+      <li><a class="block" href="students" data-link="students">Ученикам</a></li>
+      <li>
+        {{#if email }}
+          <p><b>{{{ email }}}</b>, привет!</p>
+          <a href="#" class="login" onclick="logout()">Выйти</a>
+        {{else}}
+          <a data-key="enter" href="enter" class="login">Войти</a>
+        {{/if }}
+      </li>
+    </ul>
+  </nav>
+  <script src="js/supertokens-init.js"></script>
+  <script>
+    supertokens.init({
+      appInfo: {
+        apiDomain: "http://localhost:8080",
+        apiBasePath: "api/auth",
+        appName: "backend",
+      },
+      recipeList: [
+        supertokensSession.init(),
+        supertokensThirdParty.init(),
+      ],
+    });
+  </script>
+  <script>
+    async function logout() {
+      await supertokensSession.signOut();
+      alert('You have successfully logged out of your account.')
+      window.location.href = '/';
+    }
+  </script>
+</header>

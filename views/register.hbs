@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="stylesheet" href="css/register.css">
+  {{>head}}
+</head>
+
+
+<body>
+
+{{>header}}
+<script>
+  async function register(){
+    const id = await supertokensSession.getUserId();
+    const name = document.getElementById("username").value;
+    const last_name = document.getElementById("last_name").value;
+    const nick = document.getElementById("nick").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    let studentDTO = {
+      name: name,
+      last_name: last_name,
+      nick: nick,
+      email: email,
+      password: password
+    }
+
+    await fetch('http://localhost:8080/student/create', {
+      method: "POST",
+      body: JSON.stringify(studentDTO),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    window.location.href = '/';
+  }
+</script>
+<main>
+  <h1>Sign In</h1>
+  <div id="wrapper">
+    <form id="signin" method="" action="" autocomplete="off">
+      <input type="text" id="username" name="username" placeholder="username" autocomplete="on" required/>
+      <input type="text" id="last_name" name="last_name" placeholder="last_name" autocomplete="on" required/>
+      <input type="text" id="nick" name="nick" placeholder="nick" autocomplete="on" required/>
+      <input style="display: none;" type="email" id="email" name="email" placeholder="email" autocomplete="on" value="{{{email}}}" required/>
+      <input type="password" id="password" name="password" placeholder="password" autocomplete="on" required/>
+      <p onclick="register()">зарегистрироваться</p>
+      <p>есть аккаунт? <a href="enter">войти</a></p>
+    </form>
+  </div>
+</main>
+
+
+{{>footer}}
+
+{{>copy_right}}
+
+</body>
+</html>

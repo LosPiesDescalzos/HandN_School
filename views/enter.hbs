@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <link rel="stylesheet" href="css/enter.css">
+  {{>head}}
+</head>
+
+<body>
+
+{{>header}}
+
+<main>
+  <h1>Sign In</h1>
+  <div id="wrapper">
+      <p>еще нет аккаунта? <a href="#" onclick="googleSignUpClicked()">зарегистрироваться</a></p>
+      <p>войти через <a href="#" onclick="googleSignInClicked()">google</a></p>
+  </div>
+</main>
+<script>
+
+  async function googleSignInClicked() {
+    try {
+      const authUrl = await supertokensThirdParty.getAuthorisationURLWithQueryParamsAndSetState({
+        providerId: 'google',
+        authorisationURL: 'http://localhost:8080/auth/callback/google',
+      });
+      window.location.assign(authUrl);
+    } catch (err) {
+      if (err.isSuperTokensGeneralError === true) {
+        window.alert(err.message);
+      } else {
+        window.alert(err.message);
+      }
+    }
+  }
+
+  async function googleSignUpClicked() {
+    try {
+      const authUrl = await supertokensThirdParty.getAuthorisationURLWithQueryParamsAndSetState({
+        providerId: 'google',
+        authorisationURL: 'http://localhost:8080/student/callback/google',
+      });
+      window.location.assign(authUrl);
+    } catch (err) {
+      if (err.isSuperTokensGeneralError === true) {
+        window.alert(err.message);
+      } else {
+        window.alert(err.message);
+      }
+    }
+  }
+</script>
+
+
+{{>footer}}
+
+{{>copy_right}}
+
+</body>
+</html>

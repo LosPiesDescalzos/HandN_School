@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("POSTGRES_URL")
+}
+
+model Student {
+  id   Int   @default(autoincrement()) @id
+  email String  @unique
+  nick String @unique
+  password String
+  name  String
+  last_name  String?
+  group Group[]
+  review Review[]
+  record Record[]
+}
+
+model Review {
+   id Int  @default(autoincrement()) @id
+   description String
+   student Student @relation(fields: [student_id], references: [id])
+   student_id Int
+}
+
+model Record {
+  id       Int      @default(autoincrement()) @id
+  course Course @relation(fields: [course_id], references: [id])
+  course_id     Int
+  student    Student @relation(fields: [student_id], references: [id])
+  student_id Int
+  date DateTime
+}
+
+model Teacher {
+  id        Int    @default(autoincrement()) @id
+  email String  @unique
+  password String
+  name  String
+  last_name  String?
+  contract String   @unique
+  course Course[]
+}
+
+model Course {
+  id        Int      @default(autoincrement()) @id
+  subject     String  @unique
+  price Float
+  teacher    Teacher @relation(fields: [teacher_id], references: [id])
+  teacher_id Int
+  record Record[]
+  group Group[]
+}
+
+model Pair {
+  id Int @default(autoincrement()) @id
+  start_time DateTime
+  end_time DateTime
+  schedule Schedule @relation(fields: [schedule_id], references: [id])
+  schedule_id Int
+}
+
+model Group {
+  id Int @default(autoincrement()) @id
+  name  String  @unique
+  course Course @relation(fields: [course_id], references: [id])
+  course_id Int
+  student Student[]
+  schedule Schedule[]
+}
+
+model Schedule {
+  id Int @default(autoincrement()) @id
+  week_day  String
+  group Group @relation(fields: [group_id], references: [id])
+  group_id Int
+  pair Pair[]
+  link String
+}
+
+model Product {
+  id Int @default(autoincrement()) @id
+  name String
+  price Int
+  description String
+  count Int
+}

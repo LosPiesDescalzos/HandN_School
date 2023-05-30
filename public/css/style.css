@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+body{
+    line-height: 1.5;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    background-color: #628356;
+    width: 100%;
+}
+
+
+.sofa {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: url(../images/sofa.jpg) no-repeat -100px ;
+    background-size: auto 350px;
+}
+
+.mars {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: url(../images/marsel.jpg) no-repeat 0px ;
+    background-size: auto 550px;
+}
+
+.kate {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: url(../images/kate.jpg) no-repeat -40px ;
+    background-size: auto 350px;
+}
+
+.text-team {
+    width: 400px;
+}
+
+
+
+.main {
+    margin-top: 120px;
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.main-photo {
+    text-align: center;
+    margin-top: -40px;
+}
+
+.main-text {
+    justify-content: center;
+}
+
+.main-students {
+    margin-top: 100px;
+}
+
+.main-parents {
+    margin-top: 100px;
+
+
+}
+
+.main-job{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.team-sofa, .team-kate, .team-mars{
+    margin-top: 100px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media (max-width: 680px)
+{
+    .parents-photo {
+        display: none;
+    }
+}
+
+
+@media (max-width: 680px)
+{
+    .h1sofa {
+        margin-top: 200px;
+    }
+
+    .sofa{
+        margin-top: 200px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: url(../images/sofa.jpg) no-repeat -50px 0px;
+        background-size: auto 180px;
+    }
+
+    .mars{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: url(../images/marsel.jpg) no-repeat -15px;
+        background-size: auto 300px;
+    }
+
+    .kate{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: url(../images/kate.jpg) no-repeat -35px;
+        background-size: auto 200px;
+    }
+
+}

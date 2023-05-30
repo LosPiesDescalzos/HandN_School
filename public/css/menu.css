@@ -1,0 +1,41 @@
+.top-menu {
+    position: fixed;
+    display: flex;
+    z-index: 1000;
+    background: #628356;
+}
+
+.menu-main {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.menu-main li {
+    display: inline-block;
+}
+
+.menu-main a {
+    display: block;
+    padding: 15px 32px;
+    color: #fcd462;
+    text-decoration: none;
+}
+
+.block__active {
+    font-weight: bold;
+    background: rgba(0,0,0,.2);
+}
+
+.menu-main a:hover {
+    background: rgba(0,0,0,.2);
+}
+
+
+@media (max-width: 720px) {
+    .top-menu {margin: 0;}
+    .menu-main li {
+        display: block;
+        margin-right: 0;
+    }
+}

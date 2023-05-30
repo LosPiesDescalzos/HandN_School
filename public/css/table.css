@@ -1,0 +1,54 @@
+table {
+    margin-bottom: 20px;
+    margin-top: 80px;
+    max-width: 50%;
+    margin-left: 20px;
+    width: 40%;
+    border-spacing: 0;
+}
+td {
+    padding: 10px 20px;
+    text-align: center;
+    transition: all 0.5s linear;
+}
+td:first-child { /*главный столбец*/
+    text-align: left;
+    color: #3D3511;
+    font-weight: bold;
+}
+th { /*главная строка*/
+    padding: 10px 20px;
+    color: #3D3511;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+td:nth-child(even) {
+    background: #F6D27E;
+}
+td:nth-child(odd) {
+    background: #D1C7BF;
+}
+th:nth-child(even)  {
+    background: #F6D27E;
+}
+th:nth-child(odd)  {
+    background: #D1C7BF;
+}
+.round-top {
+    border-top-left-radius: 5px;
+}
+.round-bottom {
+    border-bottom-left-radius: 5px;
+}
+tr:hover td{
+    background: #D1C7BF;
+    font-weight: bold;
+}
+
+@media (max-width: 680px)
+{
+    table{
+        margin-top: 250px;
+    }
+}
+

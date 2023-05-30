@@ -1,0 +1,30 @@
+fieldset {
+    margin-top: 100px;
+    margin-left: 20px;
+    border: none;
+    -webkit-border-radius: 3px;
+    display: inline-block;
+}
+
+#result {
+    text-align: center;
+    background: black;
+    color: #fccfd9;
+}
+
+
+input {
+    margin: 2em;
+}
+
+
+table{
+     margin-left: 20px;
+    margin-bottom: 20px;
+     border-collapse: collapse;
+     border-spacing: 0;
+ }
+th, td{
+    padding: 10px 20px;
+    border: 1px solid #000;
+}

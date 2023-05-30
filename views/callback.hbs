@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{>head}}
+  <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/website.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/supertokens.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/session.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/supertokens/supertokens-web-js/bundle/thirdparty.js"></script>
+
+  <script src="js/supertokens-init.js"></script>
+<!--  <script src="js/tokens.js"></script>-->
+<!--  <script src="js/handle-google.js"></script>-->
+  <script>
+    supertokens.init({
+      appInfo: {
+        apiDomain: "http://localhost:8080",
+        apiBasePath: "api/auth",
+        appName: "backend",
+      },
+      recipeList: [
+        supertokensSession.init(),
+        supertokensThirdParty.init(),
+      ],
+    });
+  </script>
+  <script>
+    async function handleGoogleCallback() {
+      try {
+        const response = await supertokensThirdParty.signInAndUp();
+
+        if (response.status === "OK") {
+          console.log(response.user)
+          window.location.assign("/account");
+        } else {
+          window.alert("No email provided by social login. Please use another form of login");
+          window.location.assign("/enter"); // redirect back to login page
+        }
+      } catch (err) {
+        if (err.isSuperTokensGeneralError === true) {
+          // this may be a custom error message sent from the API by you.
+          window.alert(err.message);
+        } else {
+          window.alert("Oops! Something went wrong.");
+        }
+      }
+    }
+    handleGoogleCallback();
+  </script>
+</head>
+<body>
+</body>
+</html>

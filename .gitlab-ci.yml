@@ -1,0 +1,30 @@
+stages:
+  - build
+  - deploy
+
+image: docker:latest
+
+build-main:
+  stage: build
+  only:
+    - main
+  tags:
+    - lospiesdescalzos_backend_runner_tag
+  script:
+    - docker compose build
+    - echo "${CI_JOB_TOKEN}" | docker login -u gitlab-ci-token --password-stdin "${CI_REGISTRY}"
+    - docker compose push
+
+deploy-main:
+  stage: deploy
+  only:
+    - main
+  tags:
+    - lospiesdescalzos_backend_runner_tag
+  script:
+    - echo "${CI_JOB_TOKEN}" | docker login -u gitlab-ci-token --password-stdin "${CI_REGISTRY}"
+    - docker compose pull
+    - docker compose down
+    - docker compose up -d
+
+

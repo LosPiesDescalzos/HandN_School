@@ -1,0 +1,42 @@
+
+.logo {
+    width: 300px;
+}
+
+.left {
+    width: 300px;
+    height: 100em;
+    background-color: #D0CCCB;
+    padding-top: 60px;
+    float: left;
+}
+
+
+.photo {
+    background: url(../images/liza.jpg) no-repeat -70px -40px;
+    background-size: auto 550px;
+    margin: auto auto;
+    border: 2px;
+    border-color: #F6D27E;
+    border-style: solid;
+    height: 200px;
+    width: 200px;
+}
+
+.right {
+    height: 100em;
+    margin-right: 240px;
+    width: 100%;
+    display: block;
+}
+
+@media (max-width: 720px) {
+   .photo{
+       display: none;
+   }
+}
+
+#email {
+    margin-top: 200px;
+    z-index: 10000;
+}
